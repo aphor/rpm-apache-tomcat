@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.saltoconsulting</groupId>
 	<artifactId>rpm-apache-tomcat</artifactId>
@@ -14,6 +13,18 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tomcat.version>8.0.18</tomcat.version>
 	</properties>
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>external.atlassian.jgitflow</groupId>
+			    <artifactId>jgitflow-maven-plugin</artifactId>
+			    <version>1.0-m4.3</version>
+			    <configuration>
+			        <noDeploy>true</noDeploy>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<profiles>
 		<profile>
 			<id>rpm</id>
@@ -233,8 +244,7 @@ fi
 				            <phase>install</phase>
 				            <configuration>
 				              <tasks>
-								<copy todir="${project.basedir}" flatten="true" overwrite="true" verbose="true"
-									failonerror="true">
+								<copy todir="${project.basedir}" flatten="true" overwrite="true" verbose="true" failonerror="true">
 									<fileset dir="${project.build.directory}" includes="**/*.rpm" />
 								</copy> 
 				              </tasks>
