@@ -54,6 +54,7 @@
 									<distribution>SALTO Consulting</distribution>
 									<group>Applications/Programming</group>
 									<packager>Quentin Vandekerckhove</packager>
+									<licence>Apache License v2</licence>
 									<needarch>noarch</needarch>
 									<prefix>/opt</prefix>
 									<provides>
