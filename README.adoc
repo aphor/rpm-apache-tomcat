@@ -1,0 +1,16 @@
+= RPM package of Apache Tomcat
+:tomcat-version: 8.0.18
+
+RPM package of the Apache Tomcat 8.
+
+== Build 
+
+You can rebuild the package yourself with the following command: 
+
+	mvn install
+
+== Installation
+
+	rpm -ivh apache-tomcat-{tomcat-version}.noarch.rpm
+
+
