@@ -17,6 +17,9 @@
 	<profiles>
 		<profile>
 			<id>rpm</id>
+			<activation>
+		      <activeByDefault>true</activeByDefault>
+		    </activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -223,15 +226,31 @@ fi
 							</execution>
 						</executions>
 					</plugin>
+					<plugin>
+				        <artifactId>maven-antrun-plugin</artifactId>
+				        <executions>
+				          <execution>
+				            <phase>install</phase>
+				            <configuration>
+				              <tasks>
+								<copy todir="${project.basedir}" flatten="true" overwrite="true" verbose="true"
+									failonerror="true">
+									<fileset dir="${project.build.directory}" includes="**/*.rpm" />
+								</copy> 
+				              </tasks>
+				            </configuration>
+				            <goals>
+				              <goal>run</goal>
+				            </goals>
+				          </execution>
+				        </executions>
+				      </plugin>
 				</plugins>
 			</build>
 		</profile>
 	</profiles>
-	<!-- <scm> <connection>scm:svn:http://svn/svn/fidelite/thirdparty/liquibase/trunk</connection> 
-		<developerConnection>scm:svn:http://svn/svn/fidelite/thirdparty/liquibase/trunk</developerConnection> 
-		</scm> <distributionManagement> <repository> <id>releases</id> <name>Adeo 
-		Maven Release</name> <url>http://nexus.corp.leroymerlin.com/nexus/content/repositories/releases</url> 
-		</repository> <snapshotRepository> <id>snapshots</id> <name>Adeo Maven Snapshots</name> 
-		<url>http://nexus.corp.leroymerlin.com/nexus/content/repositories/snapshots</url> 
-		</snapshotRepository> </distributionManagement> -->
+	<scm>
+		<connection>scm:git:https://github.com/qvdk/rpm-apache-tomcat.git</connection>
+		<developerConnection>scm:git:https://github.com/qvdk/rpm-apache-tomcat.git</developerConnection>
+	</scm>
 </project>
